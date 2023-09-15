@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+
+    <div class="col-sm-3 col-6">
+        <img src="{{profile.image}}" alt="{{profile.name}}" class="img-fluid img-thumbnail" />
+    </div>
+    
+    <div class="col-sm-3 col-6">
+        <h1 class="h5">{{profile.name}}</h1>
+        <p>Espécie: {{profile.species}}</p>
+        <p>Gênero: {{profile.gender}}</p>
+        <p>Origem: <a href="{{profile.origin.url}}">{{profile.origin.name}}</a></p>
+        <p>Localização: <a href="{{profile.location.url}}">{{profile.location.name}}</a></p>
+        
+        <h2 class="h5">Episódios:</h2>
+        <ul>
+            {% for episode in episodes %}
+                <li><a href="{{profile.episode}}">{{profile.episode.episode}}</a></li>
+                <li><a href="{{profile.episode}}">{{profile.episode.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
+

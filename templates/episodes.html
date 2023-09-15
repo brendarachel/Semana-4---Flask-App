@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    {% for episode in episodes %}
+        <div class="col-sm-3 col-6">
+
+            <ul class="episodes">
+                <li>Nome: {{episode.name}}</li>
+                <li>Data de Lançamento: {{episode.air_date}}</li>
+                <li>Código: {{episode.episode}}</li>
+                <li>Personagens: {{episode.characters}}</li>
+            </ul>
+            
+            <p>
+                <a href="/episode"
+                class="btn btn-primary">Ver Episódio</a>
+            </p>
+
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
