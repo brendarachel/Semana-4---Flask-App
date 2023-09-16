@@ -1,4 +1,4 @@
-# DESAFIO 3 - Semana 4 - Bootcamp Python e Django WomakersCode
+# DESAFIO 3 - Bootcamp Python e Django WomakersCode - Flask-APP
 ### Repositório criado para armazenar o desafio proposto na Semana 4 sobre o uso de API com o Flask-APP, utilizando a API Rick e Morty.
 
 ### Proposta do desafio:
