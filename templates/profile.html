@@ -17,8 +17,7 @@
         <h2 class="h5">Episódios:</h2>
         <ul>
             {% for episode in episodes %}
-                <li><a href="{{profile.episode}}">{{profile.episode.episode}}</a></li>
-                <li><a href="{{profile.episode}}">{{profile.episode.name}}</a></li>
+                <li><a href="{{episode.url}}">{{episode.episode}} - {{episode.name}}</a></li>
             {% endfor %}
         </ul>
     </div>

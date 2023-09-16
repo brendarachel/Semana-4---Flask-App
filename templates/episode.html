@@ -12,13 +12,13 @@
                 <th>Código</th>
                 <th>Data de Lançamento</th>
             </tr>
-            {% for episode in episodes %}
             <tr>
-                <td><a href="/episodes">{{episode.name}}</a></td>
+            {% for episode in episodes %}
+                <td>{{episode.name}}</td>
                 <td>{{episode.episode}}</td>
                 <td>{{episode.air_date}}</td>
-            </tr>
             {% endfor %}
+            </tr>
         </table>
 </div>
 {% endblock %}
