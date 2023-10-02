@@ -2,22 +2,19 @@
 
 {% block content %}
 <div class="row">
-    {% for location in locations %}
-        <div class="col-sm-3 col-6">
-
-            <ul class="local">
-                <li>ID: {{location.id}}</li>
-                <li>Nome: {{location.name}}</li>
-                <li>Tipo: {{location.type}}</li>
-                <li>Dimensão: {{location.dimension}}</li>
-                <li>Residentes: {{location.residents}}</li>
-            </ul>
-            
-            <p>
-                <a href="/locations/{{location.name}}"></a>
-            </p>
-
-        </div>
+    <table class="row">
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Dimensão</th>
+        </tr>
+        {% for location in locations %}
+        <tr>
+            <td><a href="/location/{{location.id}}">{{location.name}}</a></td>
+            <td>{{location.type}}</td>
+            <td>{{location.dimension}}</td>
+        </tr>
     {% endfor %}
+    </table>
 </div>
 {% endblock %}

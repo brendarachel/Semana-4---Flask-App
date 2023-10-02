@@ -2,23 +2,17 @@
 
 {% block content %}
 <div class="row">
+    <p>Nome: {{location.name}}</p>
+    <p>Tipo: {{location.type}}</p>
+    <p>Dimensão: {{location.dimension}}</p>
 
-       <div class="col-sm-3 col-6">
-        <h1>Localizações</h1>
-
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Dimensão</th>
-            </tr>
-            {% for location in locations %}
-            <tr>
-                <td><a href="/locations/{{location.name}}">{{location.name}}</a></td>
-                <td>{{location.type}}</td>
-                <td>{{location.dimension}}</td>
-            </tr>
-            {% endfor %}
-        </table>
+    <p><strong>Personagens:</strong></p>
+    <table class="row">
+        {% for character in location.characters %}
+        <tr>
+            <td><a href="/profile/{{character.id}}">{{character.name}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

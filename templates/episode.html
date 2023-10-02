@@ -2,23 +2,18 @@
 
 {% block content %}
 <div class="row">
+    <p>Nome: {{episode.name}}</p>
+    <p>Código: {{episode.episode}}</p>
+    <p>Data de lançamento: {{episode.air_date}}</p>
 
-    <div class="col-sm-3 col-6">
-        <h1>Episódios</h1>
+    <p><strong>Personagens:</strong></p>
 
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Código</th>
-                <th>Data de Lançamento</th>
-            </tr>
-            <tr>
-            {% for episode in episodes %}
-                <td>{{episode.name}}</td>
-                <td>{{episode.episode}}</td>
-                <td>{{episode.air_date}}</td>
-            {% endfor %}
-            </tr>
-        </table>
+    <table class="row">
+        {% for character in episode.characters %}
+        <tr> 
+            <td><a href="/profile/{{character.id}}">{{character.name}}</a></td>  
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}

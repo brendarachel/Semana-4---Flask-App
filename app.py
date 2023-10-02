@@ -65,6 +65,7 @@ def get_list_locations():
 
     for location in dict["results"]:
         location = {
+            "id": location["id"],
             "name": location["name"],
             "type": location["type"],
             "dimension": location["dimension"]
@@ -72,7 +73,7 @@ def get_list_locations():
 
         locations.append(location)
     
-    return{"locations": locations}
+    return render_template("locations.html", locations=locations)
 
 @app.route("/location/<id>")
 def get_location(id):
@@ -82,17 +83,15 @@ def get_location(id):
     location = json.loads(data)
 
     # Recuperação da lista de personagens na localização
-    character_ids = [int(char.split("/")[-1]) for char in location["residents"]]
     characters = []
-
-    for char_id in character_ids:
-        char_url = f"https://rickandmortyapi.com/api/character/{char_id}"
+    for char_url in location['residents']:
         char_response = urllib.request.urlopen(char_url)
         char_data = char_response.read()
         char_dict = json.loads(char_data)
         characters.append(char_dict)
+    location['characters'] = characters
 
-    return render_template("location.html", location=location, characters=characters)
+    return render_template("location.html", location=location)
 
 @app.route("/episodes")
 def get_list_episodes():
@@ -106,6 +105,7 @@ def get_list_episodes():
 
     for episode in dict["results"]:
         episode = {
+            "id": episode["id"],
             "name": episode["name"],
             "air_date": episode["air_date"],
             "episode": episode["episode"]
@@ -113,7 +113,7 @@ def get_list_episodes():
 
         episodes.append(episode)
 
-    return {"episodes": episodes}
+    return render_template("episodes.html", episodes=episodes)
 
 @app.route("/episode/<id>")
 def get_episode(id):
@@ -123,14 +123,13 @@ def get_episode(id):
     episode = json.loads(data)
 
     # Recuperação da lista de personagens no episódio
-    character_ids = [int(char.split("/")[-1]) for char in episode["characters"]]
     characters = []
 
-    for char_id in character_ids:
-        char_url = f"https://rickandmortyapi.com/api/character/{char_id}"
+    for char_url in episode['characters']:
         char_response = urllib.request.urlopen(char_url)
         char_data = char_response.read()
         char_dict = json.loads(char_data)
         characters.append(char_dict)
+    episode['characters'] = characters
 
-    return render_template("episode.html", episode=episode, characters=characters)
+    return render_template("episode.html", episode=episode)
