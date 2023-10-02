@@ -20,6 +20,13 @@ def get_profile(id):
     data = response.read()
     dict = json.loads(data)
 
+    location_url = dict['location']['url']
+    location_response = urllib.request.urlopen(location_url)
+    location_data = location_response.read()
+    location_dict = json.loads(location_data)
+
+    dict['location'] = location_dict
+
     episodes = []
 
     for episode_url in dict["episode"]:
@@ -27,8 +34,10 @@ def get_profile(id):
         episode_data = episode_response.read()
         episode_dict = json.loads(episode_data)
         episodes.append(episode_dict)
+    
+    dict['episodes'] = episodes
 
-    return render_template("profile.html", profile=dict, episodes=episodes)
+    return render_template("profile.html", profile=dict)
 
 #decorator para informar qual url deve ser aberta
 @app.route("/lista")

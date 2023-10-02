@@ -11,15 +11,17 @@
         <h1 class="h5">{{profile.name}}</h1>
         <p>Espécie: {{profile.species}}</p>
         <p>Gênero: {{profile.gender}}</p>
-        <p>Origem: <a href="{{profile.origin.url}}">{{profile.origin.name}}</a></p>
-        <p>Localização: <a href="{{profile.location.url}}">{{profile.location.name}}</a></p>
+        <p>Origem: <a href="/location/{{profile.location.id}}">{{profile.origin.name}}</a></p>
+        <p>Localização: <a href="/location/{{profile.location.id}}">{{profile.location.name}}</a></p>
         
         <h2 class="h5">Episódios:</h2>
-        <ul>
-            {% for episode in episodes %}
-                <li><a href="{{episode.url}}">{{episode.episode}} - {{episode.name}}</a></li>
+        <table class="row">
+            {% for episode in profile.episodes %}
+            <tr>
+                <td><a href="/episode/{{episode.id}}">{{episode.episode}} - {{episode.name}}</a></td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
     </div>
 
 </div>
